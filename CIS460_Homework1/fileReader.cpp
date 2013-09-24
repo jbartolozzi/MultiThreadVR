@@ -20,6 +20,7 @@ fileReader::fileReader(char* fileName) {
 	readAllAttributes = false;
 	voxelDensityIndex = 0;
 	ORIG = glm::vec3(0.0,0.0,0.0);
+	KVAL = 1;
 	while (!file.good()) {
 		cout << "Invalid File Name Please Try Again: ";
 		char* filename = new char[25];
@@ -83,6 +84,9 @@ void fileReader::readAttributes(char* line) {
 	}
 	else if (strcmp(attribute, "ORIG")==0) {
 		ORIG = readNextVecToken();
+	}
+	else if (strcmp(attribute, "KVAL")==0) {
+		KVAL = readNextFloatToken();
 	}
 	else {
 		int size = XYZC.x * XYZC.y * XYZC.z; 

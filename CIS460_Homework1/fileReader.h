@@ -24,6 +24,7 @@ public:
 	glm::vec3 LPOS;	// position of light in world space
 	glm::vec3 LCOL;	// color of point light in floating point
 	glm::vec3 ORIG; // the origin of the voxel buffer
+	float KVAL;
 
 	int voxelDensityIndex;
 	bool readAllAttributes;

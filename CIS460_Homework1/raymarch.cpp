@@ -3,73 +3,64 @@
 using namespace std;
 
 raymarch::raymarch(char* filename) {
-	kValue = -1;
+	
 	fr = new fileReader(filename);
 	cam = fr->getCameraFromFile();
 	int size = ((int)fr->XYZC.x*(int)fr->XYZC.y*(int)fr->XYZC.z);
 	vb = new voxelBuffer(fr->voxelDensities,size,fr->XYZC.x,fr->XYZC.y,fr->XYZC.z,fr->DELT);
 	vb->origin = fr->ORIG;
-	int qwe =fr->RESO.x * fr->RESO.y;
-	redOut = new float[qwe];
-	greenOut = new float[qwe];
-	blueOut = new float[qwe];
+	kValue = -1.f * fr->KVAL;
+	output.SetSize((int)fr->RESO.x,(int)fr->RESO.y);
+	output.SetBitDepth(24);
+	IMAGEWIDTH = fr->RESO.x;
 }
 
 // Ray = Eye + t (P-E)/|P-E|  glm::normalize(getDirectionFromCoordinate(i,j)-eye))
 // r = xe + n*s
 void raymarch::endMultiRayMarch() {
-	int newY = fr->RESO.y;
-	BMP output;
-	output.SetSize((int)fr->RESO.x,(int)fr->RESO.y);
-	output.SetBitDepth(24);
 	char* filename = fr->FILE;
-	for (int i = 0; i < fr->RESO.x; i++) {
-		for (int j = 0; j < fr->RESO.y; j++) {
-			output(i,(fr->RESO.y - 1) - j)->Red = redOut[(newY * j) + i];
-			output(i,(fr->RESO.y - 1) - j)->Green = greenOut[(newY * j) + i];
-			output(i,(fr->RESO.y - 1) - j)->Blue = blueOut[(newY * j) + i];
-		}
-	}
 	output.WriteToFile(filename);
 	cout << "Successfully wrote file named: " << filename << endl;
 }
 //transmittance 0 = opaque
 void raymarch::calculateValues(int startingPlace) {
-	int startIndex = 0;
+	/*int startIndex = 0;
 	int endIndex = 0;
 	if (startingPlace == 0) {
 		
 		startIndex = 0;
 		endIndex = (fr->RESO.x)/4;
-		cout << startIndex << "to " << endIndex << endl;
+		cout << startIndex << " to " << endIndex << endl;
 	}
 	else if (startingPlace == 1) {
 		
 		startIndex = (fr->RESO.x)/4;
 		endIndex = (fr->RESO.x)/2;
-		cout << startIndex << "to " << endIndex << endl;
+		cout << startIndex << " to " << endIndex << endl;
 	}
 	else if (startingPlace == 2) {
 		
 		startIndex = (fr->RESO.x)/2;
 		endIndex = 3*((fr->RESO.x)/4);
-		cout << startIndex << "to " << endIndex << endl;
+		cout << startIndex << " to " << endIndex << endl;
 	}
 	else if (startingPlace == 3) {
 		
 		startIndex = 3*((fr->RESO.x)/4);
 		endIndex = fr->RESO.x;
-		cout << startIndex << "to " << endIndex << endl;
+		cout << startIndex << " to " << endIndex << endl;
 	}
 	else {
 		startIndex = 0;
 		endIndex = fr->RESO.x;
-		cout << startIndex << "to " << endIndex << endl;
+		cout << startIndex << " to " << endIndex << endl;
 	}
-	float step = fr->STEP;
-	// for each x
-	for (int sx = startIndex; sx < endIndex; sx++) {
+	
+	// for each x */
+	//for (int sx = startIndex; sx < endIndex; sx++) {
 		// for each y
+	float step = fr->STEP;
+	int sx = startingPlace;
 		for(int sy = 0; sy < fr->RESO.y; sy++) {
 			glm::vec3 outColor(0.0,0.0,0.0);
 			glm::vec3 direction = glm::normalize(cam->getDirectionFromCoordinate(sx,sy)-cam->eye);
@@ -97,11 +88,11 @@ void raymarch::calculateValues(int startingPlace) {
 			}
 			outColor += T*fr->BRGB;
 
-			redOut[sx+sy] = outColor.x * 255;
-			greenOut[sx+sy] = outColor.y * 255;
-			blueOut[sx+sy] = outColor.z * 255;
+			output(sx,(fr->RESO.y - 1) - sy)->Red = outColor.x * 255;
+			output(sx,(fr->RESO.y - 1) - sy)->Green = outColor.y * 255;
+			output(sx,(fr->RESO.y - 1) - sy)->Blue = outColor.z * 255;
 		}
-	}
+	//}
 }
 
 float raymarch::computeLightValue(glm::vec3* currentVoxel) {

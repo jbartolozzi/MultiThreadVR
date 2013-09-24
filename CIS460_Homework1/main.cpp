@@ -1,11 +1,17 @@
 #include "raymarch.h"
-#include <process.h>
-#include <Windows.h>
+#include <thread>
 using namespace std;
 
 raymarch* rm;
-void executeThreads(void* arg);
+void executeThreads(int arg);
 void runMulti();
+int MAXWIDTH;
+
+
+void executeThreads(int arg) {
+	int start = arg;
+	rm->calculateValues(start);
+}
 
 int main(int argc, char** argv) {
 	char* arg;
@@ -15,6 +21,8 @@ int main(int argc, char** argv) {
 		cin >> arg;
 	}
 	rm = new raymarch(arg);
+	MAXWIDTH = rm->IMAGEWIDTH;
+
 	runMulti();
 	rm->endMultiRayMarch();
 	// Close console
@@ -26,6 +34,7 @@ int main(int argc, char** argv) {
 			cout << "Input File Name: ";
 			cin >> arg;
 			rm = new raymarch(arg);
+			MAXWIDTH = rm->IMAGEWIDTH;
 			runMulti();
 			rm->endMultiRayMarch();
 		}
@@ -33,13 +42,29 @@ int main(int argc, char** argv) {
 }
 
 void runMulti() {
-	_beginthread(executeThreads,0,(void*)0);
-	_beginthread(executeThreads,0,(void*)1);
-	_beginthread(executeThreads,0,(void*)2);
-	_beginthread(executeThreads,0,(void*)3);
-}
-
-void executeThreads(void *arg) {
-	int start = (int) arg;
-	rm->calculateValues(start);
+	cout << endl;
+	cout << "Rendering: " << endl;
+	for (int i = 0; i < MAXWIDTH;) {
+		thread t1(executeThreads,i);
+		thread t2(executeThreads,i+1);
+		thread t3(executeThreads,i+2);
+		thread t4(executeThreads,i+3);
+		thread t5(executeThreads,i+4);
+		thread t6(executeThreads,i+5);
+		thread t7(executeThreads,i+6);
+		thread t8(executeThreads,i+7);
+		t1.join();
+		t2.join();
+		t3.join();
+		t4.join();
+		t5.join();
+		t6.join();
+		t7.join();
+		t8.join();
+		if (i%200 == 0) {
+			cout << 100*(((float)i)/((float)MAXWIDTH)) << "%, ";
+		}
+		i+=8;
+	}
+	cout << "100%" << endl;
 }

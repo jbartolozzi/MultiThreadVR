@@ -18,6 +18,8 @@ public:
 	float* greenOut;
 	float* blueOut;
 	void endMultiRayMarch();
+	BMP output;
+	int IMAGEWIDTH;
 };
 
 #endif
