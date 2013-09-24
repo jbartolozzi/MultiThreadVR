@@ -20,6 +20,7 @@ public:
 	void endMultiRayMarch();
 	BMP output;
 	int IMAGEWIDTH;
+	float calculateInterpolationWeights(glm::vec3 initial);
 };
 
 #endif

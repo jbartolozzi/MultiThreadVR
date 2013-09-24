@@ -24,43 +24,11 @@ void raymarch::endMultiRayMarch() {
 }
 //transmittance 0 = opaque
 void raymarch::calculateValues(int startingPlace) {
-	/*int startIndex = 0;
-	int endIndex = 0;
-	if (startingPlace == 0) {
-		
-		startIndex = 0;
-		endIndex = (fr->RESO.x)/4;
-		cout << startIndex << " to " << endIndex << endl;
-	}
-	else if (startingPlace == 1) {
-		
-		startIndex = (fr->RESO.x)/4;
-		endIndex = (fr->RESO.x)/2;
-		cout << startIndex << " to " << endIndex << endl;
-	}
-	else if (startingPlace == 2) {
-		
-		startIndex = (fr->RESO.x)/2;
-		endIndex = 3*((fr->RESO.x)/4);
-		cout << startIndex << " to " << endIndex << endl;
-	}
-	else if (startingPlace == 3) {
-		
-		startIndex = 3*((fr->RESO.x)/4);
-		endIndex = fr->RESO.x;
-		cout << startIndex << " to " << endIndex << endl;
-	}
-	else {
-		startIndex = 0;
-		endIndex = fr->RESO.x;
-		cout << startIndex << " to " << endIndex << endl;
-	}
-	
-	// for each x */
-	//for (int sx = startIndex; sx < endIndex; sx++) {
-		// for each y
 	float step = fr->STEP;
-	int sx = startingPlace;
+	for (int sx = startingPlace; sx < fr->RESO.x;) {
+		if (startingPlace == 0 && sx%200 == 0) {
+			cout << 100*((float)sx / (float)fr->RESO.x) << "%, ";
+		}
 		for(int sy = 0; sy < fr->RESO.y; sy++) {
 			glm::vec3 outColor(0.0,0.0,0.0);
 			glm::vec3 direction = glm::normalize(cam->getDirectionFromCoordinate(sx,sy)-cam->eye);
@@ -92,7 +60,8 @@ void raymarch::calculateValues(int startingPlace) {
 			output(sx,(fr->RESO.y - 1) - sy)->Green = outColor.y * 255;
 			output(sx,(fr->RESO.y - 1) - sy)->Blue = outColor.z * 255;
 		}
-	//}
+		sx+=8;
+	}
 }
 
 float raymarch::computeLightValue(glm::vec3* currentVoxel) {
@@ -115,4 +84,18 @@ float raymarch::computeLightValue(glm::vec3* currentVoxel) {
 	else {
 		return -1.0;
 	}
+}
+
+float raymarch::calculateInterpolationWeights(glm::vec3 initial) {
+/*Vxyz =	 V000 (1 - x) (1 - y) (1 - z) +
+V100 x (1 - y) (1 - z) + 
+V010 (1 - x) y (1 - z) + 
+V001 (1 - x) (1 - y) z +
+V101 x (1 - y) z + 
+V011 (1 - x) y z + 
+V110 x y (1 - z) + 
+V111 x y z */
+
+	glm::vec3 p1(initial.x,initial.y, initial.z + 1)
+	glm::vec3 p2
 }
