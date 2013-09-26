@@ -14,6 +14,18 @@ voxelBuffer::voxelBuffer(float* input, int size, int _width, int _height, int _d
 	displacement = (depth * voxelSize);
 }
 
+voxelBuffer::voxelBuffer(int size, int _width, int _height, int _depth, float _voxelsize){
+	voxelArray = new voxel[size];
+	width = _width;
+	height = _height;
+	depth = _depth;
+	voxelSize = _voxelsize;
+	displacement = (depth * voxelSize);
+
+}
+
+
+
 // get voxel at index
 voxel* voxelBuffer::at(int x, int y, int z) {
 	int index = (width * y) + x + (z*(width * height));
@@ -51,3 +63,21 @@ glm::vec3* voxelBuffer::locationOfVoxel(glm::vec3 ray) {
 		return out;
 	}
 }
+
+void voxelBuffer::generateSphere(glm::vec3 origin, float radius) {
+	for(int x = 0; x < width; x++) {
+		for(int y = 0; y < height; y++) {
+			for (int z = 0; z < depth; z++) {
+				glm::vec3 check(x,y,z);
+				float d = glm::distance(check,origin);
+				if (d <= radius) {
+					if (voxelArray[(width * y) + x + (z*(width * height))].density < 1) {
+						voxelArray[(width * y) + x + (z*(width * height))].density += 1.f - (d/radius);
+					}
+					voxelArray[(width * y) + x + (z*(width * height))].lightValue = -1;
+				}
+			}
+		}
+	}
+}
+

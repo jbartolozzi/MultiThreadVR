@@ -7,7 +7,15 @@ raymarch::raymarch(char* filename) {
 	fr = new fileReader(filename);
 	cam = fr->getCameraFromFile();
 	int size = ((int)fr->XYZC.x*(int)fr->XYZC.y*(int)fr->XYZC.z);
-	vb = new voxelBuffer(fr->voxelDensities,size,fr->XYZC.x,fr->XYZC.y,fr->XYZC.z,fr->DELT);
+	//vb = new voxelBuffer(fr->voxelDensities,size,fr->XYZC.x,fr->XYZC.y,fr->XYZC.z,fr->DELT);
+	vb = new voxelBuffer(size,fr->XYZC.x,fr->XYZC.y,fr->XYZC.z,fr->DELT);
+	cout << fr->objNum << endl;
+	for (int i = 0; i < fr->objNum; i++) {
+		if (fr->objTypes[i] == fr->SPHERE) {
+			vb->generateSphere(fr->objCenter[i],fr->objRadius[i]);
+		}
+	}
+
 	vb->origin = fr->ORIG;
 	kValue = -1.f * fr->KVAL;
 	output.SetSize((int)fr->RESO.x,(int)fr->RESO.y);
@@ -84,18 +92,4 @@ float raymarch::computeLightValue(glm::vec3* currentVoxel) {
 	else {
 		return -1.0;
 	}
-}
-
-float raymarch::calculateInterpolationWeights(glm::vec3 initial) {
-/*Vxyz =	 V000 (1 - x) (1 - y) (1 - z) +
-V100 x (1 - y) (1 - z) + 
-V010 (1 - x) y (1 - z) + 
-V001 (1 - x) (1 - y) z +
-V101 x (1 - y) z + 
-V011 (1 - x) y z + 
-V110 x y (1 - z) + 
-V111 x y z */
-
-	glm::vec3 p1(initial.x,initial.y, initial.z + 1)
-	glm::vec3 p2
 }

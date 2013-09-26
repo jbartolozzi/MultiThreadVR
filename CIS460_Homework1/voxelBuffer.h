@@ -17,9 +17,12 @@ public:
 	
 	voxelBuffer();
 	voxelBuffer(float* input, int size, int _width, int _height, int _depth, float _voxelsize);
+	voxelBuffer(int size, int _width, int _height, int _depth, float _voxelsize);
 	voxel* at(int x, int y, int z);
 	voxel* get(glm::vec3 v);
 	voxel* voxelArray;
 	glm::vec3* locationOfVoxel(glm::vec3 ray);
+
+	void generateSphere(glm::vec3 origin, float radius);
 };
 #endif

@@ -34,7 +34,17 @@ fileReader::fileReader(char* fileName) {
 			readAttributes(line);
 		}
 		else {
-			readVoxelDensity(line);
+			cout << "Finished reading Attributes" << endl;
+			cout << "Num of objects is = " << objNum << endl;
+			for (int i = 0; i < objNum; i++) {
+				char line1[15];
+				char line2[100];
+				char line3[10];
+				file.getline(line1,15);
+				file.getline(line2,100);
+				file.getline(line3,10);
+				readObjBlock(line1,line2,line3);
+			}
 		}
 	}
 }
@@ -42,7 +52,11 @@ fileReader::fileReader(char* fileName) {
 void fileReader::readAttributes(char* line) {
 	char* attribute = strtok(line, " ");
 
-	if (strcmp(attribute, "DELT")==0) {
+	if (attribute == nullptr) {
+		cout << "NULL" << endl;
+	}
+
+	else if (strcmp(attribute, "DELT")==0) {
 		DELT = readNextFloatToken();
 	}
 	else if (strcmp(attribute, "STEP")==0) {
@@ -90,9 +104,11 @@ void fileReader::readAttributes(char* line) {
 	}
 	else {
 		int size = XYZC.x * XYZC.y * XYZC.z; 
+		objNum = atof(attribute);
 		readAllAttributes = true;
 		voxelDensities = new float[size];
-		readVoxelDensity(attribute);
+		//readVoxelDensity(attribute);
+		currentObj = 0;
 	}
 }
 
@@ -101,6 +117,27 @@ void fileReader::readVoxelDensity(char* line) {
 		voxelDensities[voxelDensityIndex] = (float) atof(line);
 		voxelDensityIndex++;
 	}
+}
+
+void fileReader::readObjBlock(char* line1, char* line2, char* line3) {
+	if (strcmp(line1, "sphere") == 0) {
+		objTypes.push_back(SPHERE);
+	}
+	else if (strcmp(line1, "cloud") == 0) {
+		objTypes.push_back(CLOUD);
+	}
+	else if (strcmp(line1, "pyroclastic") == 0) {
+		objTypes.push_back(PYRO);
+	}
+
+	char* x = strtok(line2, " ");
+	char* y = strtok(NULL, " ");
+	char *z = strtok(NULL, " ");
+
+	objCenter.push_back(glm::vec3(atof(x),atof(y),atof(z)));
+
+	objRadius.push_back(atof(line3));
+	currentObj++;
 }
 
 char* fileReader::readNextCharToken(){

@@ -1,18 +1,39 @@
-﻿Build started 9/24/2013 12:15:57 PM.
+﻿Build started 9/26/2013 6:36:43 PM.
      1>Project "D:\Documents\Git\MultiThreadVR\CIS460_Homework1\CIS460_Homework1.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Programs\Visual Studio 2012\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt raymarch.cpp
+         D:\Programs\Visual Studio 2012\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt fileReader.cpp main.cpp raymarch.cpp
+         fileReader.cpp
+     1>fileReader.cpp(12): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>fileReader.cpp(13): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>fileReader.cpp(53): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 D:\Programs\Visual Studio 2012\VC\include\string.h(200) : see declaration of 'strtok'
+     1>fileReader.cpp(71): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 D:\Programs\Visual Studio 2012\VC\include\string.h(110) : see declaration of 'strcpy'
+     1>fileReader.cpp(74): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>fileReader.cpp(75): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>fileReader.cpp(104): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>fileReader.cpp(105): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>fileReader.cpp(131): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 D:\Programs\Visual Studio 2012\VC\include\string.h(200) : see declaration of 'strtok'
+     1>fileReader.cpp(132): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 D:\Programs\Visual Studio 2012\VC\include\string.h(200) : see declaration of 'strtok'
+     1>fileReader.cpp(133): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 D:\Programs\Visual Studio 2012\VC\include\string.h(200) : see declaration of 'strtok'
+     1>fileReader.cpp(137): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>fileReader.cpp(142): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 D:\Programs\Visual Studio 2012\VC\include\string.h(200) : see declaration of 'strtok'
+         main.cpp
          raymarch.cpp
-     1>raymarch.cpp(10): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>raymarch.cpp(15): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>raymarch.cpp(42): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>raymarch.cpp(59): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>raymarch.cpp(59): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
-     1>raymarch.cpp(60): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>raymarch.cpp(60): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
-     1>raymarch.cpp(61): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>raymarch.cpp(61): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
-     1>raymarch.cpp(73): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>raymarch.cpp(11): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>raymarch.cpp(23): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>raymarch.cpp(50): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>raymarch.cpp(67): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>raymarch.cpp(67): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
+     1>raymarch.cpp(68): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>raymarch.cpp(68): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
+     1>raymarch.cpp(69): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>raymarch.cpp(69): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
+     1>raymarch.cpp(81): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
        Link:
          D:\Programs\Visual Studio 2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Documents\Git\MultiThreadVR\Release\CIS460_Homework1.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Documents\Git\MultiThreadVR\Release\CIS460_Homework1.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Documents\Git\MultiThreadVR\Release\CIS460_Homework1.lib" /MACHINE:X86 /SAFESEH Release\Camera.obj
          Release\EasyBMP.obj
@@ -28,4 +49,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.00
+Time Elapsed 00:00:02.35

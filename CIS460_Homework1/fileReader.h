@@ -6,10 +6,17 @@
 #include <fstream>
 #include <string>
 #include <stdlib.h>
+#include <vector>
 
 
 class fileReader {
+
 public:
+enum objType {
+	SPHERE,
+	PYRO,
+	CLOUD,
+};
 	float DELT;		// Size of voxel in floating point
 	float STEP;		// the step size
 	glm::vec3 XYZC; // number of voxels wide, tall, deep
@@ -39,5 +46,13 @@ public:
 	int readNextIntToken();
 	float readNextFloatToken();
 	glm::vec3 readNextVecToken();
+
+	std::vector<objType> objTypes;		//vector of object types
+	std::vector<glm::vec3> objCenter;	//vector of center points
+	std::vector<float> objRadius;		//vector of radii
+	int objNum;							//number of total objects
+	int currentObj;						//current object being read
+
+	void readObjBlock(char* line1, char* line2, char* line);
 };
 #endif

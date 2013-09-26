@@ -1,53 +1,26 @@
-﻿Build started 9/23/2013 5:02:59 PM.
-     1>Project "C:\Users\james\Documents\GitHub\MultiThreadVR\CIS460_Homework1\CIS460_Homework1.vcxproj" on node 2 (Build target(s)).
-     1>InitializeBuildStatus:
-         Touching "Debug\CIS460_Homework1.unsuccessfulbuild".
-       ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /D _CRT_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp EasyBMP.cpp fileReader.cpp main.cpp raymarch.cpp voxel.cpp voxelBuffer.cpp
-         voxelBuffer.cpp
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\voxelbuffer.cpp(14): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\voxelbuffer.cpp(35): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-         voxel.cpp
-         raymarch.cpp
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\raymarch.cpp(10): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\raymarch.cpp(12): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\raymarch.cpp(18): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\raymarch.cpp(88): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\raymarch.cpp(105): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\raymarch.cpp(105): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\raymarch.cpp(106): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\raymarch.cpp(106): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\raymarch.cpp(107): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\raymarch.cpp(107): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\raymarch.cpp(118): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-         main.cpp
+﻿Build started 9/26/2013 7:02:35 PM.
+     1>Project "D:\Documents\Git\MultiThreadVR\CIS460_Homework1\CIS460_Homework1.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Programs\Visual Studio 2012\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /D _CRT_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt fileReader.cpp
          fileReader.cpp
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\filereader.cpp(12): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\filereader.cpp(13): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\filereader.cpp(63): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\filereader.cpp(64): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\filereader.cpp(88): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-         EasyBMP.cpp
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\easybmp.cpp(994): warning C4101: 'ZeroWORD' : unreferenced local variable
-         Camera.cpp
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\camera.cpp(33): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\camera.cpp(34): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
-     1>c:\users\james\documents\github\multithreadvr\cis460_homework1\camera.cpp(35): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
-         Generating Code...
+     1>d:\documents\git\multithreadvr\cis460_homework1\filereader.cpp(12): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>d:\documents\git\multithreadvr\cis460_homework1\filereader.cpp(13): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>d:\documents\git\multithreadvr\cis460_homework1\filereader.cpp(78): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>d:\documents\git\multithreadvr\cis460_homework1\filereader.cpp(79): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>d:\documents\git\multithreadvr\cis460_homework1\filereader.cpp(106): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>d:\documents\git\multithreadvr\cis460_homework1\filereader.cpp(107): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>d:\documents\git\multithreadvr\cis460_homework1\filereader.cpp(139): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\james\Documents\GitHub\MultiThreadVR\Debug\CIS460_Homework1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\james\Documents\GitHub\MultiThreadVR\Debug\CIS460_Homework1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\james\Documents\GitHub\MultiThreadVR\Debug\CIS460_Homework1.lib" /MACHINE:X86 Debug\Camera.obj
+         D:\Programs\Visual Studio 2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Documents\Git\MultiThreadVR\Debug\CIS460_Homework1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Documents\Git\MultiThreadVR\Debug\CIS460_Homework1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Documents\Git\MultiThreadVR\Debug\CIS460_Homework1.lib" /MACHINE:X86 Debug\Camera.obj
          Debug\EasyBMP.obj
          Debug\fileReader.obj
          Debug\main.obj
          Debug\raymarch.obj
          Debug\voxel.obj
          Debug\voxelBuffer.obj
-         CIS460_Homework1.vcxproj -> C:\Users\james\Documents\GitHub\MultiThreadVR\Debug\CIS460_Homework1.exe
-       FinalizeBuildStatus:
-         Deleting file "Debug\CIS460_Homework1.unsuccessfulbuild".
-         Touching "Debug\CIS460_Homework1.lastbuildstate".
-     1>Done Building Project "C:\Users\james\Documents\GitHub\MultiThreadVR\CIS460_Homework1\CIS460_Homework1.vcxproj" (Build target(s)).
+         CIS460_Homework1.vcxproj -> D:\Documents\Git\MultiThreadVR\Debug\CIS460_Homework1.exe
+     1>Done Building Project "D:\Documents\Git\MultiThreadVR\CIS460_Homework1\CIS460_Homework1.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:04.32
+Time Elapsed 00:00:01.29
