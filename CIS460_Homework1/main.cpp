@@ -14,33 +14,42 @@ void executeThreads(int arg) {
 }
 
 int main(int argc, char** argv) {
+	int numFrames;
 	char* arg = new char[25];
 	cout << "Input File Name: ";
 	cin >> arg;
+	cout << "Number of Frames: ";
+	cin >> numFrames;
 	rm = new raymarch(arg);
 	MAXWIDTH = rm->IMAGEWIDTH;
+	for ( int i = 0; i < numFrames; i ++) {
+		rm->setUpVoxels(i);
+		runMulti();
+		rm->endMultiRayMarch(i);
+		rm->clearBMP();
 
-	runMulti();
-	rm->endMultiRayMarch();
-	// Close console
+	}
+	delete rm;
+	/* Close console
 	char input = 'y';
 	while (input == 'y' || input == 'Y') {
 		cout << "Create Another? (Y for Yes): ";
 		cin >> input;
 		if (input == 'Y' || input == 'y') {
+			cout << endl;
 			cout << "Input File Name: ";
 			cin >> arg;
 			rm = new raymarch(arg);
 			MAXWIDTH = rm->IMAGEWIDTH;
 			runMulti();
-			rm->endMultiRayMarch();
+			rm->endMultiRayMarch(1);
+			delete rm;
 		}
-	}
+	}*/
 }
 
 void runMulti() {
-	cout << endl;
-	cout << "Rendering: " << endl;
+	cout << "Rendering: ";
 	thread t1(executeThreads,0);
 	thread t2(executeThreads,1);
 	thread t3(executeThreads,2);

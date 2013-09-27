@@ -4,22 +4,30 @@
 #include "Camera.h"
 #include "voxelBuffer.h"
 #include "fileReader.h"
+#include <thread>
 
 class raymarch {
 public:
 	float kValue;
-	fileReader* fr;
+	
 	Camera* cam;
-	voxelBuffer* vb;
+	//voxelBuffer* vb;
 	raymarch(char* filename);
+	~raymarch();
 	void calculateValues(int startingplace);
 	float computeLightValue(glm::vec3* currentVoxel);
 	float* redOut;
 	float* greenOut;
 	float* blueOut;
-	void endMultiRayMarch();
+	void endMultiRayMarch(int frame);
 	BMP output;
 	int IMAGEWIDTH;
+
+	void clearBMP();
+
+	void setUpVoxels(int t);
+	//void multiThreadNoise(int start);
+	//void multiThreadPyro(int start);
 };
 
 #endif

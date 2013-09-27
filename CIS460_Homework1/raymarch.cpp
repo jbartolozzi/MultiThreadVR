@@ -1,6 +1,13 @@
 #include "raymarch.h"
 
 using namespace std;
+voxelBuffer* vb;
+void multiThreadSphere(int start);
+void multiThreadNoise(int start);
+void multiThreadPyro(int start);
+fileReader* fr;
+int currentObjectNum;
+float TIMER;
 
 raymarch::raymarch(char* filename) {
 	
@@ -9,13 +16,6 @@ raymarch::raymarch(char* filename) {
 	int size = ((int)fr->XYZC.x*(int)fr->XYZC.y*(int)fr->XYZC.z);
 	//vb = new voxelBuffer(fr->voxelDensities,size,fr->XYZC.x,fr->XYZC.y,fr->XYZC.z,fr->DELT);
 	vb = new voxelBuffer(size,fr->XYZC.x,fr->XYZC.y,fr->XYZC.z,fr->DELT);
-	cout << fr->objNum << endl;
-	for (int i = 0; i < fr->objNum; i++) {
-		if (fr->objTypes[i] == fr->SPHERE) {
-			vb->generateSphere(fr->objCenter[i],fr->objRadius[i]);
-		}
-	}
-
 	vb->origin = fr->ORIG;
 	kValue = -1.f * fr->KVAL;
 	output.SetSize((int)fr->RESO.x,(int)fr->RESO.y);
@@ -23,15 +23,89 @@ raymarch::raymarch(char* filename) {
 	IMAGEWIDTH = fr->RESO.x;
 }
 
+void multiThreadNoise(int start) {
+	vb->generateNoise(start,TIMER,fr->objRadius[currentObjectNum],fr->objCenter[currentObjectNum],fr->DELT);
+}
+
+void multiThreadSphere(int start) {
+	vb->generateSphere(start,fr->objCenter[currentObjectNum],fr->objRadius[currentObjectNum],fr->DELT);
+}
+
+void multiThreadPyro(int start) {
+	vb->generatePyro(start,TIMER,fr->objRadius[currentObjectNum],fr->objCenter[currentObjectNum],fr->DELT);
+}
+
+void raymarch::setUpVoxels(int t) {
+	TIMER = (float) t;
+	
+	for (currentObjectNum = 0; currentObjectNum < fr->objNum; currentObjectNum++) {
+		if (fr->objTypes[currentObjectNum] == fr->SPHERE) {
+			cout << "Creating  Sphere: ";
+			thread t1(multiThreadSphere,0);
+			thread t2(multiThreadSphere,1);
+			thread t3(multiThreadSphere,2);
+			thread t4(multiThreadSphere,3);
+			t1.join();
+			t2.join();
+			t3.join();
+			t4.join();
+			cout << "100%" << endl;
+		}
+		else if (fr->objTypes[currentObjectNum] == fr->CLOUD) {
+			cout << "Creating  Cloud: ";
+			thread t5(multiThreadNoise,0);
+			thread t6(multiThreadNoise,1);
+			thread t7(multiThreadNoise,2);
+			thread t8(multiThreadNoise,3);
+			t5.join();
+			t6.join();
+			t7.join();
+			t8.join();
+			cout << "100%" << endl;
+		}
+		else if (fr->objTypes[currentObjectNum] == fr->PYRO) {
+			cout << "Creating  Pyroclastic: ";
+			thread t9(multiThreadPyro,0);
+			thread t10(multiThreadPyro,1);
+			thread t11(multiThreadPyro,2);
+			thread t12(multiThreadPyro,3);
+			t9.join();
+			t10.join();
+			t11.join();
+			t12.join();
+			cout << "100%" << endl;
+		}
+	}
+}
+
 // Ray = Eye + t (P-E)/|P-E|  glm::normalize(getDirectionFromCoordinate(i,j)-eye))
 // r = xe + n*s
-void raymarch::endMultiRayMarch() {
+void raymarch::endMultiRayMarch(int frame) {
 	char* filename = fr->FILE;
-	output.WriteToFile(filename);
-	cout << "Successfully wrote file named: " << filename << endl;
+	int size = strlen(filename)+4+frame;
+	char* str = new char[size];
+	char integer_string[32];
+	sprintf(integer_string, "%d", frame);
+	strcpy (str,filename);
+	strcat (str,integer_string);
+	strcat (str,".bmp");
+	output.WriteToFile(str);
+	cout << "Successfully wrote file named: " << str << endl;
+}
+
+void raymarch::clearBMP() {
+	for (int sx = 0; sx < fr->RESO.x; sx++) {
+		for (int sy = 0; sy < fr->RESO.y; sy++) {
+			output(sx,(fr->RESO.y - 1) - sy)->Red = 0;
+			output(sx,(fr->RESO.y - 1) - sy)->Green = 0;
+			output(sx,(fr->RESO.y - 1) - sy)->Blue = 0;
+		}
+	}
+	vb->clearBuffer();
 }
 //transmittance 0 = opaque
 void raymarch::calculateValues(int startingPlace) {
+	
 	float step = fr->STEP;
 	for (int sx = startingPlace; sx < fr->RESO.x;) {
 		if (startingPlace == 0 && sx%200 == 0) {
@@ -92,4 +166,9 @@ float raymarch::computeLightValue(glm::vec3* currentVoxel) {
 	else {
 		return -1.0;
 	}
+}
+
+raymarch::~raymarch() {
+	delete fr;
+	delete vb;
 }

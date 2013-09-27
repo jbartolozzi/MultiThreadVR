@@ -35,8 +35,7 @@ fileReader::fileReader(char* fileName) {
 			readAttributes(line);
 		}
 		else {
-			cout << "Finished reading Attributes" << endl;
-			cout << "Num of objects is = " << objNum << endl;
+			cout << "There are " << objNum << " object(s)." << endl;
 			char line1[15];
 			char line2[100];
 			char line3[10];
@@ -63,7 +62,6 @@ void fileReader::readAttributes(char* line) {
 	char* attribute = strtok(line, " ");
 
 	if (attribute == nullptr) {
-		cout << "NULL" << endl;
 	}
 
 	else if (strcmp(attribute, "DELT")==0) {

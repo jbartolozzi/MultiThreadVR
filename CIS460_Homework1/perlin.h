@@ -19,7 +19,6 @@ public:
     return perlin_noise_2D(vec);
   };
 
-  //Taadaa, 3D noise.  Thank me later - Cory Boatright
   float Get(float x, float y, float z) {
 	  float vec[3];
 	  vec[0] = x;

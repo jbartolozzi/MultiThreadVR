@@ -3,6 +3,8 @@
 #include "voxel.h"
 #include <vector>
 #include <stdio.h>
+#include "perlin.h"
+#include <iostream>
 
 class voxelBuffer {
 private:
@@ -23,6 +25,9 @@ public:
 	voxel* voxelArray;
 	glm::vec3* locationOfVoxel(glm::vec3 ray);
 
-	void generateSphere(glm::vec3 origin, float radius);
+	void clearBuffer();
+	void generateSphere(int startingpoint, glm::vec3 origin, float radius, float voxelSize);
+	void generateNoise(int startingpoint, float t, float radius, glm::vec3 origin, float voxelSize);
+	void generatePyro(int startingpoint, float t, float radius, glm::vec3 origin, float voxelSize);
 };
 #endif

@@ -8,30 +8,12 @@ RESO 640 480
 EYEP 0 0 200
 VDIR 0 0 -1
 UVEC 0 1 0
-FOVY 10
+FOVY 45
 LPOS 200 0 0
 LCOL 1 1 1
-KVAL 0.5
-ORIG -50 -50 -50
 
-5
+1
 
 sphere
-50 60 50
-10
-
-sphere
-50 20 50
-10
-
-sphere
-20 20 50
-10
-
-sphere
-80 50 50
-10
-
-sphere
-80 70 50
-10
+50 50 50
+40

@@ -1,9 +1,6 @@
 /* coherent noise function over 1, 2 or 3 dimensions */
 /* (copyright Ken Perlin) */
 
-//added the function that lets you actually get 3 dimensional noise - Cory Boatright
-//also made it way more readable, since when i found it the code was resembling a bad copy/paste
-
 #include <stdio.h>
 #include <math.h>
 
