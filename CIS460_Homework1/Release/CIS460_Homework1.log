@@ -1,26 +1,27 @@
-﻿Build started 9/26/2013 6:36:43 PM.
+﻿Build started 9/26/2013 7:58:48 PM.
      1>Project "D:\Documents\Git\MultiThreadVR\CIS460_Homework1\CIS460_Homework1.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\Programs\Visual Studio 2012\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt fileReader.cpp main.cpp raymarch.cpp
          fileReader.cpp
      1>fileReader.cpp(12): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
      1>fileReader.cpp(13): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>fileReader.cpp(53): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>fileReader.cpp(63): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  D:\Programs\Visual Studio 2012\VC\include\string.h(200) : see declaration of 'strtok'
-     1>fileReader.cpp(71): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>fileReader.cpp(85): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  D:\Programs\Visual Studio 2012\VC\include\string.h(110) : see declaration of 'strcpy'
-     1>fileReader.cpp(74): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>fileReader.cpp(75): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>fileReader.cpp(104): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>fileReader.cpp(105): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>fileReader.cpp(131): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>fileReader.cpp(88): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>fileReader.cpp(89): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>fileReader.cpp(116): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>fileReader.cpp(119): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>fileReader.cpp(120): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>fileReader.cpp(146): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  D:\Programs\Visual Studio 2012\VC\include\string.h(200) : see declaration of 'strtok'
-     1>fileReader.cpp(132): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>fileReader.cpp(147): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  D:\Programs\Visual Studio 2012\VC\include\string.h(200) : see declaration of 'strtok'
-     1>fileReader.cpp(133): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>fileReader.cpp(148): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  D:\Programs\Visual Studio 2012\VC\include\string.h(200) : see declaration of 'strtok'
-     1>fileReader.cpp(137): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>fileReader.cpp(142): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>fileReader.cpp(152): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>fileReader.cpp(157): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  D:\Programs\Visual Studio 2012\VC\include\string.h(200) : see declaration of 'strtok'
          main.cpp
          raymarch.cpp
@@ -49,4 +50,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.35
+Time Elapsed 00:00:01.96

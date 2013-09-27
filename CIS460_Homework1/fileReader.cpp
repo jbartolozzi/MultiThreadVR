@@ -21,6 +21,7 @@ fileReader::fileReader(char* fileName) {
 	voxelDensityIndex = 0;
 	ORIG = glm::vec3(0.0,0.0,0.0);
 	KVAL = 1;
+	FRAME = 1;
 	while (!file.good()) {
 		cout << "Invalid File Name Please Try Again: ";
 		char* filename = new char[25];
@@ -36,10 +37,19 @@ fileReader::fileReader(char* fileName) {
 		else {
 			cout << "Finished reading Attributes" << endl;
 			cout << "Num of objects is = " << objNum << endl;
-			for (int i = 0; i < objNum; i++) {
+			char line1[15];
+			char line2[100];
+			char line3[10];
+			file.getline(line1,15);
+			file.getline(line2,100);
+			file.getline(line3,10);
+			readObjBlock(line1,line2,line3);
+			for (int i = 1; i < objNum; i++) {
+				char space[2];
 				char line1[15];
 				char line2[100];
 				char line3[10];
+				file.getline(space,2);
 				file.getline(line1,15);
 				file.getline(line2,100);
 				file.getline(line3,10);
@@ -101,6 +111,9 @@ void fileReader::readAttributes(char* line) {
 	}
 	else if (strcmp(attribute, "KVAL")==0) {
 		KVAL = readNextFloatToken();
+	}
+	else if (strcmp(attribute, "FRAME")==0) {
+		FRAME = readNextFloatToken();
 	}
 	else {
 		int size = XYZC.x * XYZC.y * XYZC.z; 
