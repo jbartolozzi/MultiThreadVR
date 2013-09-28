@@ -94,13 +94,13 @@ void raymarch::endMultiRayMarch(int frame) {
 }
 
 void raymarch::clearBMP() {
-	for (int sx = 0; sx < fr->RESO.x; sx++) {
+	/*for (int sx = 0; sx < fr->RESO.x; sx++) {
 		for (int sy = 0; sy < fr->RESO.y; sy++) {
 			output(sx,(fr->RESO.y - 1) - sy)->Red = 0;
 			output(sx,(fr->RESO.y - 1) - sy)->Green = 0;
 			output(sx,(fr->RESO.y - 1) - sy)->Blue = 0;
 		}
-	}
+	}*/
 	vb->clearBuffer();
 }
 //transmittance 0 = opaque

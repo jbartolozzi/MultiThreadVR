@@ -127,11 +127,10 @@ void voxelBuffer::generatePyro(int startingpoint, float t, float radius, glm::ve
 }
 
 void voxelBuffer::clearBuffer() {
-	for(int x = 0; x < width;) {
+	for(int x = 0; x < width; x++) {
 		for(int y = 0; y < height; y++) {
 			for (int z = 0; z < depth; z++) {
 				voxelArray[(width * y) + x + (z*(width * height))].density = 0.f;
-				voxelArray[(width * y) + x + (z*(width * height))].density = -1;
 			}
 		}
 	}

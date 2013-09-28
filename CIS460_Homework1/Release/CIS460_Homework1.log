@@ -1,34 +1,25 @@
-﻿Build started 9/27/2013 3:43:26 AM.
-     1>Project "C:\Users\james\Documents\GitHub\MultiThreadVR\CIS460_Homework1\CIS460_Homework1.vcxproj" on node 2 (Build target(s)).
-     1>InitializeBuildStatus:
-         Creating "Release\CIS460_Homework1.unsuccessfulbuild" because "AlwaysCreate" was specified.
-       ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp raymarch.cpp
-         main.cpp
-         raymarch.cpp
-     1>raymarch.cpp(18): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>raymarch.cpp(23): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>raymarch.cpp(92): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(357) : see declaration of 'sprintf'
-     1>raymarch.cpp(93): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\string.h(110) : see declaration of 'strcpy'
-     1>raymarch.cpp(94): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\string.h(115) : see declaration of 'strcat'
-     1>raymarch.cpp(95): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\string.h(115) : see declaration of 'strcat'
-     1>raymarch.cpp(103): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>raymarch.cpp(104): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>raymarch.cpp(105): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>raymarch.cpp(128): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>raymarch.cpp(145): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>raymarch.cpp(145): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
-     1>raymarch.cpp(146): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>raymarch.cpp(146): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
-     1>raymarch.cpp(147): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>raymarch.cpp(147): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
-     1>raymarch.cpp(159): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+﻿Build started 9/27/2013 4:38:51 PM.
+     1>Project "D:\Documents\Git\MultiThreadVR\CIS460_Homework1\CIS460_Homework1.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Programs\Visual Studio 2012\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt voxelBuffer.cpp
+         voxelBuffer.cpp
+     1>voxelBuffer.cpp(14): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>voxelBuffer.cpp(23): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>voxelBuffer.cpp(46): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>voxelBuffer.cpp(86): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>voxelBuffer.cpp(86): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>voxelBuffer.cpp(94): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>voxelBuffer.cpp(95): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>voxelBuffer.cpp(96): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>voxelBuffer.cpp(97): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>voxelBuffer.cpp(108): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>voxelBuffer.cpp(108): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>voxelBuffer.cpp(115): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>voxelBuffer.cpp(116): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>voxelBuffer.cpp(117): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>voxelBuffer.cpp(120): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\james\Documents\GitHub\MultiThreadVR\Release\CIS460_Homework1.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\james\Documents\GitHub\MultiThreadVR\Release\CIS460_Homework1.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\james\Documents\GitHub\MultiThreadVR\Release\CIS460_Homework1.lib" /MACHINE:X86 /SAFESEH Release\Camera.obj
+         D:\Programs\Visual Studio 2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Documents\Git\MultiThreadVR\Release\CIS460_Homework1.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Documents\Git\MultiThreadVR\Release\CIS460_Homework1.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Documents\Git\MultiThreadVR\Release\CIS460_Homework1.lib" /MACHINE:X86 /SAFESEH Release\Camera.obj
          Release\EasyBMP.obj
          Release\fileReader.obj
          Release\main.obj
@@ -38,12 +29,9 @@
          Release\voxelBuffer.obj
          Generating code
          Finished generating code
-         CIS460_Homework1.vcxproj -> C:\Users\james\Documents\GitHub\MultiThreadVR\Release\CIS460_Homework1.exe
-       FinalizeBuildStatus:
-         Deleting file "Release\CIS460_Homework1.unsuccessfulbuild".
-         Touching "Release\CIS460_Homework1.lastbuildstate".
-     1>Done Building Project "C:\Users\james\Documents\GitHub\MultiThreadVR\CIS460_Homework1\CIS460_Homework1.vcxproj" (Build target(s)).
+         CIS460_Homework1.vcxproj -> D:\Documents\Git\MultiThreadVR\Release\CIS460_Homework1.exe
+     1>Done Building Project "D:\Documents\Git\MultiThreadVR\CIS460_Homework1\CIS460_Homework1.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.14
+Time Elapsed 00:00:01.13

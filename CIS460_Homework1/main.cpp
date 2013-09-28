@@ -27,7 +27,6 @@ int main(int argc, char** argv) {
 		runMulti();
 		rm->endMultiRayMarch(i);
 		rm->clearBMP();
-
 	}
 	delete rm;
 	/* Close console
