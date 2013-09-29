@@ -55,5 +55,11 @@ enum objType {
 	int currentObj;						//current object being read
 
 	void readObjBlock(char* line1, char* line2, char* line);
+
+	float pOctaves;
+	float pFreq;
+	float pAmp;
+	float pSeed;
+	float TRIL;
 };
 #endif

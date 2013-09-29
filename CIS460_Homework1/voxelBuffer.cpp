@@ -82,8 +82,8 @@ void voxelBuffer::generateSphere(int startingpoint, glm::vec3 origin, float radi
 }
 
 // fbm(P) - (1-|P/radius|)
-void voxelBuffer::generateNoise(int startingpoint, float t, float radius, glm::vec3 origin, float voxelSize) {
-	Perlin p3 = Perlin(10,0.1,1.1,t);
+void voxelBuffer::generateNoise(int startingpoint, float t, float radius, glm::vec3 origin, float voxelSize, float pOctaves, float pFreq, float pAmp, float pSeed, int current) {
+	Perlin p1 = Perlin(pOctaves,pFreq + glm::sin(t/100)/10,pAmp,pSeed * (float) current);
 
 	for(int x = startingpoint; x < width;) {
 		if (startingpoint == 0 && x%10 == 0) {
@@ -94,7 +94,7 @@ void voxelBuffer::generateNoise(int startingpoint, float t, float radius, glm::v
 				int newX = (x*voxelSize + voxelSize/2) - origin.x;
 				int newY = (y*voxelSize + voxelSize/2) - origin.y;
 				int newZ = (z*voxelSize - voxelSize/2) - origin.z;
-				float newDensity = p3.Get(newX,newY,newZ) + (1 - glm::length(glm::vec3(newX,newY,newZ)/radius));
+				float newDensity = p1.Get(newX,newY,newZ) + (1 - glm::length(glm::vec3(newX,newY,newZ)/radius));
 				voxelArray[(width * y) + x + (z*(width * height))].density += glm::max(glm::min(newDensity,1.f),0.f);
 				voxelArray[(width * y) + x + (z*(width * height))].lightValue = -1;
 			}
@@ -104,8 +104,8 @@ void voxelBuffer::generateNoise(int startingpoint, float t, float radius, glm::v
 }
 
 // max((radius - |P/radiu|+abs(fbm(P))),0)
-void voxelBuffer::generatePyro(int startingpoint, float t, float radius, glm::vec3 origin, float voxelSize) {
-	Perlin p3 = Perlin(5,0.1,1.1,t);
+void voxelBuffer::generatePyro(int startingpoint, float t, float radius, glm::vec3 origin, float voxelSize,float pOctaves, float pFreq, float pAmp, float pSeed, int current) {
+	Perlin p1 = Perlin(pOctaves,pFreq + glm::sin(t/100)/10,pAmp,pSeed* (float) current);
 	for(int x = startingpoint; x < width;) {
 		if (startingpoint == 0 && x%10 == 0) {
 			cout << ((float)x/(float)width)*100.f << "%, ";
@@ -117,7 +117,7 @@ void voxelBuffer::generatePyro(int startingpoint, float t, float radius, glm::ve
 				int newZ = (z*voxelSize - voxelSize/2) - origin.z;
 				
 				glm::vec3 ray(newX,newY,newZ);
-				float newDensity =  glm::max((radius - glm::length(ray/radius) + glm::abs(p3.Get(newX,newY,newZ))),0.f);
+				float newDensity =  glm::max((radius - glm::length(ray/radius) + glm::abs(p1.Get(newX,newY,newZ))),0.f);
 				voxelArray[(width * y) + x + (z*(width * height))].density += glm::max(glm::min(newDensity,1.f),0.f);
 				voxelArray[(width * y) + x + (z*(width * height))].lightValue = -1;
 			}

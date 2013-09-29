@@ -27,7 +27,7 @@ public:
 
 	void clearBuffer();
 	void generateSphere(int startingpoint, glm::vec3 origin, float radius, float voxelSize);
-	void generateNoise(int startingpoint, float t, float radius, glm::vec3 origin, float voxelSize);
-	void generatePyro(int startingpoint, float t, float radius, glm::vec3 origin, float voxelSize);
+	void generateNoise(int startingpoint, float t, float radius, glm::vec3 origin, float voxelSize,float pOctaves, float pFreq, float pAmp, float pSeed, int current);
+	void generatePyro(int startingpoint, float t, float radius, glm::vec3 origin, float voxelSize,float pOctaves, float pFreq, float pAmp, float pSeed, int current);
 };
 #endif

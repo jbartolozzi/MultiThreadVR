@@ -22,6 +22,11 @@ fileReader::fileReader(char* fileName) {
 	ORIG = glm::vec3(0.0,0.0,0.0);
 	KVAL = 1;
 	FRAME = 1;
+	pOctaves = 2.f;
+	pFreq = 0.1f;
+	pAmp = 1.1f;
+	pSeed = 123.f;
+	TRIL = 0;
 	while (!file.good()) {
 		cout << "Invalid File Name Please Try Again: ";
 		char* filename = new char[25];
@@ -112,6 +117,24 @@ void fileReader::readAttributes(char* line) {
 	}
 	else if (strcmp(attribute, "FRAME")==0) {
 		FRAME = readNextFloatToken();
+	}
+	else if (strcmp(attribute, "OCTV")==0) {
+		pOctaves = readNextFloatToken();
+	}
+	else if (strcmp(attribute, "FREQ")==0) {
+		pFreq = readNextFloatToken();
+	}
+	else if (strcmp(attribute, "AMPL")==0) {
+		pAmp = readNextFloatToken();
+	}
+	else if (strcmp(attribute, "SEED")==0) {
+		pSeed = readNextFloatToken();
+	}
+	else if (strcmp(attribute, "TRIL")==0) {
+		TRIL = readNextFloatToken();
+		if (TRIL > 1.0) {
+			TRIL = 1.0;
+		}
 	}
 	else {
 		int size = XYZC.x * XYZC.y * XYZC.z; 

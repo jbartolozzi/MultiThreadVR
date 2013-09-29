@@ -24,7 +24,7 @@ raymarch::raymarch(char* filename) {
 }
 
 void multiThreadNoise(int start) {
-	vb->generateNoise(start,TIMER,fr->objRadius[currentObjectNum],fr->objCenter[currentObjectNum],fr->DELT);
+	vb->generateNoise(start,TIMER,fr->objRadius[currentObjectNum],fr->objCenter[currentObjectNum],fr->DELT,fr->pOctaves,fr->pFreq,fr->pAmp,fr->pSeed,currentObjectNum);
 }
 
 void multiThreadSphere(int start) {
@@ -32,7 +32,7 @@ void multiThreadSphere(int start) {
 }
 
 void multiThreadPyro(int start) {
-	vb->generatePyro(start,TIMER,fr->objRadius[currentObjectNum],fr->objCenter[currentObjectNum],fr->DELT);
+	vb->generatePyro(start,TIMER,fr->objRadius[currentObjectNum],fr->objCenter[currentObjectNum],fr->DELT,fr->pOctaves,fr->pFreq,fr->pAmp,fr->pSeed,currentObjectNum);
 }
 
 void raymarch::setUpVoxels(int t) {
@@ -127,7 +127,13 @@ void raymarch::calculateValues(int startingPlace) {
 				glm::vec3 ray = cam->eye + (direction * (t * step));
 				voxel* currentV = vb->get(ray);
 				if (currentV != NULL && currentV->density > 0) {
-					float deltaT = exp(kValue * step * (currentV->density));
+					float deltaT;
+					if (fr->TRIL == 0) {
+						deltaT = exp(kValue * step * (currentV->density));
+					}
+					else {
+						deltaT = exp(kValue * step * (trilinearDensities(ray)));
+					}
 					T *= deltaT;
 					if (currentV->lightValue == -1) {
 						glm::vec3* loc = vb->locationOfVoxel(ray);
@@ -146,6 +152,54 @@ void raymarch::calculateValues(int startingPlace) {
 	}
 }
 
+float raymarch::trilinearDensities(glm::vec3 ray) {
+	glm::vec3 point(ray - fr->ORIG);
+	if (point.x > fr->XYZC.x || point.y > fr->XYZC.y || point.z > fr->XYZC.z || point.x < 0 || point.y < 0 || point.z < 0) {
+		return fr->TRIL;
+	}
+	else {
+		float pX = vb->locationOfVoxel(point)->x;
+		float pY = vb->locationOfVoxel(point)->y;
+		float pZ = vb->locationOfVoxel(point)->z;
+	
+		// 000
+		float v00 = vb->get(glm::vec3(pX-1,pY-1,pZ+1))->density;
+		//100
+		float v01 = vb->get(glm::vec3(pX+1,pY-1,pZ+1))->density;
+		//101
+		float v02 = vb->get(glm::vec3(pX+1,pY+1,pZ+1))->density;
+		//001
+		float v03 = vb->get(glm::vec3(pX-1,pY+1,pZ+1))->density;
+	
+		//010
+		float v04 = vb->get(glm::vec3(pX-1,pY-1,pZ-1))->density;
+		//110
+		float v05 = vb->get(glm::vec3(pX+1,pY-1,pZ-1))->density;
+		//111
+		float v06 = vb->get(glm::vec3(pX+1,pY+1,pZ-1))->density;
+		//011
+		float v07 = vb->get(glm::vec3(pX-1,pY+1,pZ-1))->density;
+		/*
+		Vxyz =	 V000 (1 - x) (1 - y) (1 - z) +
+		V100 x (1 - y) (1 - z) + 
+		V010 (1 - x) y (1 - z) + 
+		V001 (1 - x) (1 - y) z +
+	
+		V101 x (1 - y) z + 
+		V011 (1 - x) y z + 
+		V110 x y (1 - z) + 
+		V111 x y z */ //Taken from http://paulbourke.net/miscellaneous/interpolation/
+		return (v00*(1-pX)*(1-pY)*(1-pZ) + 
+				v01*pX*(1-pY)*(1-pZ)+
+				v04*(1-pX)*pY*(1-pZ)+
+				v03*(1-pX)*(1-pY)*pZ + 
+				v02*pX*(1-pY)*pZ +
+				v07*(1-pX)*pY*pZ +
+				v05*pX*pY*(1-pZ) +
+				v06*pX*pY*pZ);
+	}
+}
+
 float raymarch::computeLightValue(glm::vec3* currentVoxel) {
 	
 	if (currentVoxel != NULL) {
@@ -158,7 +212,12 @@ float raymarch::computeLightValue(glm::vec3* currentVoxel) {
 			glm::vec3 getVec = voxelPosition + (normalizedLightDir * (i * fr->STEP));
 			voxel* voxelAtStep = vb->get(getVec);
 			if (voxelAtStep != NULL && voxelAtStep->density > 0) {
-				T *= exp(kValue * fr->STEP * (voxelAtStep->density));
+				if (fr->TRIL == 0) {
+					T *= exp(kValue * fr->STEP * (voxelAtStep->density));
+				}
+				else {
+					T *= exp(kValue * fr->STEP * (trilinearDensities(getVec)));
+				}
 			}
 		}
 		return T;

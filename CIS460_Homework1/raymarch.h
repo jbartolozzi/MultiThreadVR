@@ -28,6 +28,8 @@ public:
 	void setUpVoxels(int t);
 	//void multiThreadNoise(int start);
 	//void multiThreadPyro(int start);
+
+	float trilinearDensities(glm::vec3 ray);
 };
 
 #endif

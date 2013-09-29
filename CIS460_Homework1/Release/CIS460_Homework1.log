@@ -1,4 +1,4 @@
-﻿Build started 9/27/2013 4:38:51 PM.
+﻿Build started 9/29/2013 12:49:41 PM.
      1>Project "D:\Documents\Git\MultiThreadVR\CIS460_Homework1\CIS460_Homework1.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\Programs\Visual Studio 2012\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt voxelBuffer.cpp
@@ -7,13 +7,11 @@
      1>voxelBuffer.cpp(23): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
      1>voxelBuffer.cpp(46): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
      1>voxelBuffer.cpp(86): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>voxelBuffer.cpp(86): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>voxelBuffer.cpp(94): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
      1>voxelBuffer.cpp(95): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
      1>voxelBuffer.cpp(96): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
      1>voxelBuffer.cpp(97): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
      1>voxelBuffer.cpp(108): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>voxelBuffer.cpp(108): warning C4305: 'argument' : truncation from 'double' to 'float'
      1>voxelBuffer.cpp(115): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
      1>voxelBuffer.cpp(116): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
      1>voxelBuffer.cpp(117): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
